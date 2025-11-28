@@ -1,0 +1,63 @@
+root = true
+
+# Base defaults (defacto for many repos)
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+max_line_length = 120
+
+# Windows shell/batch sometimes uses CRLF; keep LF in repo but allow editors to display
+[*.bat]
+end_of_line = crlf
+indent_style = tab
+indent_size = 4
+
+# Markdown: preserve author-intended spacing and allow long lines
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Terraform: follow HashiCorp style (2-space, LF, trim)
+[*.tf]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Terraform variable files
+[*.tfvars]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# JSON (config files often prefer 2-space, long lines okay)
+[*.json]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = off
+
+# YAML
+[*.yml, *.yaml]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = off
+
+# Shell scripts
+[*.sh]
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
