@@ -1,0 +1,59 @@
+name: PR Approval Gate
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+
+permissions:
+  pull-requests: read
+  contents: read
+
+jobs:
+  require-two-approvals:
+    name: Require 2 human approvals
+    runs-on: ubuntu-latest
+    env:
+      REQUIRED_APPROVALS: '2'
+    steps:
+      - name: Check approvals (exclude bots/Copilot)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const required = parseInt(process.env.REQUIRED_APPROVALS, 10) || 2;
+            const { owner, repo } = context.repo;
+            const pull_number = context.payload.pull_request?.number || context.issue.number;
+
+            if (!pull_number) {
+              core.info('No pull request number found; skipping.');
+              return;
+            }
+
+            const reviews = await github.rest.pulls.listReviews({ owner, repo, pull_number, per_page: 100 });
+
+            // Filter to APPROVED reviews from human users (exclude bots like GitHub Copilot)
+            const approvedHumanReviews = reviews.data.filter(r => {
+              const isApproved = r.state === 'APPROVED';
+              const isHuman = r.user && r.user.type === 'User';
+              const excludedLogins = new Set([
+                'github-actions[bot]',
+                'github-copilot[bot]',
+                'dependabot[bot]'
+              ]);
+              const notExcluded = r.user && !excludedLogins.has(r.user.login);
+              return isApproved && isHuman && notExcluded;
+            });
+
+            // Count unique approvers
+            const uniqueApprovers = new Set(approvedHumanReviews.map(r => r.user.login));
+            const count = uniqueApprovers.size;
+
+            core.info(`Human approvals (excluding bots/Copilot): ${count}`);
+            core.info(`Approvers: ${Array.from(uniqueApprovers).join(', ') || '(none)'}`);
+
+            if (count < required) {
+              core.setFailed(`Requires at least ${required} human approvals; currently ${count}.`);
+            } else {
+              core.info(`Approval requirement met: ${count} >= ${required}.`);
+            }
