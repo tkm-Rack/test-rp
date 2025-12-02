@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "modules/network": {
+      "release-type": "terraform-module",
+      "component": "azure-network"
+    }
+  }
+}
