@@ -1,8 +1,8 @@
 {
   "packages": {
-    "modules/network": {
+    "modules/set-variables": {
       "release-type": "terraform-module",
-      "component": "azure-network"
+      "component": "set-tfc-variables"
     }
   }
 }

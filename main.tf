@@ -1,7 +1,3 @@
-locals {
-  location = "japaneast"
-}
-
 resource "tfe_workspace" "test-rp" {
   name         = var.tfc_workspace
   organization = var.tfc_organization
@@ -13,7 +9,8 @@ resource "tfe_project" "playground" {
   organization = var.tfc_organization
 }
 
-module "network" {
-  source   = "./modules/network"
-  location = local.location
+module "set_variables" {
+  source           = "./modules/set-variables"
+  tfc_organization = var.tfc_organization
+  tfc_project      = var.tfc_project
 }
