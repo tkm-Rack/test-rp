@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/tkm-Rack/test-rp/compare/v1.1.0...v1.1.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* add token ([20740b8](https://github.com/tkm-Rack/test-rp/commit/20740b844df50a1b80d04678dc9f3878a22a1856))
+
 ## [1.1.0](https://github.com/tkm-Rack/test-rp/compare/v1.0.0...v1.1.0) (2025-12-03)
 
 
