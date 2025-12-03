@@ -129,5 +129,5 @@ gitGraph
 ```
 
 生成されるブランチ名は下記のようになる
-- release-please--branches-main--compornents-app-external
-- release-please--branches-main--compornents-app-internal
+- release-please--branches-main--components-app-external
+- release-please--branches-main--components-app-internal
