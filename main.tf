@@ -8,3 +8,9 @@ resource "tfe_project" "playground" {
   name         = var.tfc_project
   organization = var.tfc_organization
 }
+
+module "set_variables" {
+  source           = "./modules/set-variables"
+  tfc_organization = var.tfc_organization
+  tfc_project      = var.tfc_project
+}

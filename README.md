@@ -91,10 +91,10 @@ gitGraph
     commit id: "feat: new function"
     checkout main
     merge release/yyyymmdd/front
-    branch release-please/front
+    branch release-please--branches-main
     commit id: "chore(release): release ${version}"
     checkout main
-    merge release-please/front
+    merge release-please--branches-main
 ```
 
 - `main` (トランクブランチ：必ず本番環境で動いているコード)
@@ -105,7 +105,7 @@ gitGraph
     - Commit: "feat: new function"
     - Merge: squash and merge ※ このときコミットコメントを編集する最終画面で CC に編集
 
-- `release-please/front` ( RPが自動生成するブランチ )
+- `release-please--branches-main` ( RPが自動生成するブランチ )
     - Commit: "chore(release): release ${version}" ※自動生成
 
 ## 自動生成されるブランチ名の制御
@@ -129,6 +129,5 @@ gitGraph
 ```
 
 生成されるブランチ名は下記のようになる
-- release-please/app-external/1.0.0
-- release-please/app-internal/2.3.0
-※ 最後は適用されるバージョン値
+- release-please--branches-main--components-app-external
+- release-please--branches-main--components-app-internal

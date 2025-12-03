@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "modules/set-variables": {
+      "release-type": "terraform-module",
+      "component": "set-variables"
+    }
+  }
+}
