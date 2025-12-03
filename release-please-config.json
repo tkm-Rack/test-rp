@@ -2,7 +2,7 @@
   "packages": {
     "modules/set-variables": {
       "release-type": "terraform-module",
-      "component": "set-tfc-variables"
+      "component": "set-variables"
     }
   }
 }
