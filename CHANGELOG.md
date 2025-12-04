@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/tkm-Rack/test-rp/compare/v1.1.1...v1.1.2) (2025-12-04)
+
+
+### Bug Fixes
+
+* workflow で不要な設定を削除した ([a8ad40c](https://github.com/tkm-Rack/test-rp/commit/a8ad40cbe1b9dce88e3538d2113e807543cb76ba))
+
 ## [1.1.1](https://github.com/tkm-Rack/test-rp/compare/v1.1.0...v1.1.1) (2025-12-03)
 
 
